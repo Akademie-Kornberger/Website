@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pakete | Akademie Kornberger</title>
+    <title>Pakete | Coach Tobi</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&family=Playfair+Display:italic,wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -14,7 +14,7 @@
     
     <div class="main-wrapper">
         <nav class="navbar">
-            <div class="logo">AKADEMIE <span class="accent-gold">KORNBERGER</span></div>
+            <div class="logo">COACH <span class="accent-gold">TOBI</span></div>
             <a href="index.html" class="back-link">✕ ZURÜCK</a>
         </nav>
 
@@ -25,15 +25,44 @@
             </h1>
         </header>
 
-        <div class="package-grid">
+        <div class="package-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+            
             <div class="package-card">
                 <div>
-                    <span class="package-label">ESSENTIAL</span>
-                    <h2 class="package-title">Kickstart</h2>
+                    <span class="package-label">EINSTIEG</span>
+                    <h2 class="package-title">Basic</h2>
                     <ul class="feature-list">
                         <li><span>✓</span> Individueller Trainingsplan</li>
-                        <li><span>✓</span> Basis Ernährungs-Guide</li>
-                        <li><span>✓</span> Check-In alle 2 Wochen</li>
+                        <li><span>✓</span> Adaptierung (alle 2 Wochen)</li>
+                        <li><span>✓</span> 2x Wöchentliche Checkups</li>
+                    </ul>
+                </div>
+                <a href="termin.html" class="package-btn">ANFRAGEN</a>
+            </div>
+
+            <div class="package-card" style="border-color: var(--mokka-accent); background: rgba(15, 15, 15, 0.9);">
+                <div>
+                    <span class="package-label" style="color: var(--mokka-accent);">POPULÄR</span>
+                    <h2 class="package-title">Standard</h2>
+                    <ul class="feature-list">
+                        <li><span>✓</span> Trainingsplan & Ersteinweisung</li>
+                        <li><span>✓</span> <strong>Ernährungsleitfaden inkl.</strong></li>
+                        <li><span>✓</span> 3x Wöchentliche Checkups</li>
+                        <li><span>✓</span> <strong>Chat-Support (alle Fragen)</strong></li>
+                    </ul>
+                </div>
+                <a href="termin.html" class="package-btn" style="background: var(--mokka-accent);">JETZT WÄHLEN</a>
+            </div>
+
+            <div class="package-card">
+                <div>
+                    <span class="package-label">ADVANCED</span>
+                    <h2 class="package-title">Premium</h2>
+                    <ul class="feature-list">
+                        <li><span>✓</span> Individueller Trainingsplan</li>
+                        <li><span>✓</span> <strong>Vollständiger Ernährungsplan</strong></li>
+                        <li><span>✓</span> 3x Checkup inkl. Videocall</li>
+                        <li><span>✓</span> <strong>Technik Feedback via Video</strong></li>
                     </ul>
                 </div>
                 <a href="termin.html" class="package-btn">ANFRAGEN</a>
@@ -41,26 +70,13 @@
 
             <div class="package-card">
                 <div>
-                    <span class="package-label">EXCELLENCE</span>
-                    <h2 class="package-title">Performance</h2>
+                    <span class="package-label">MAXIMUM</span>
+                    <h2 class="package-title">Elite</h2>
                     <ul class="feature-list">
-                        <li><span>✓</span> 1-zu-1 Coaching</li>
-                        <li><span>✓</span> Volle Ernährungsplanung</li>
-                        <li><span>✓</span> Wöchentliche Video-Calls</li>
-                        <li><span>✓</span> WhatsApp Support</li>
-                    </ul>
-                </div>
-                <a href="termin.html" class="package-btn">ANFRAGEN</a>
-            </div>
-
-            <div class="package-card">
-                <div>
-                    <span class="package-label">ELITE</span>
-                    <h2 class="package-title">High-End</h2>
-                    <ul class="feature-list">
-                        <li><span>✓</span> Rund-um-die-Uhr Betreuung</li>
-                        <li><span>✓</span> Mindset & Business Coaching</li>
-                        <li><span>✓</span> Persönliche Treffen</li>
+                        <li><span>✓</span> Wöchentliche Plan-Adaptierung</li>
+                        <li><span>✓</span> <strong>Meal-for-Meal Ernährungsplan</strong></li>
+                        <li><span>✓</span> Tägliche Check-ins & Call</li>
+                        <li><span>✓</span> <strong>Deep-Dive Videoanalyse</strong></li>
                     </ul>
                 </div>
                 <a href="termin.html" class="package-btn">ANFRAGEN</a>
@@ -68,7 +84,7 @@
         </div>
         
         <a href="https://instagram.com/kornberger.tobias" target="_blank" class="insta-tag">@kornberger.tobias</a>
-        <footer class="minimal-footer">© 2026 Akademie Kornberger</footer>
+        <footer class="minimal-footer">© 2026 Coach Tobi</footer>
     </div>
 </body>
 </html>

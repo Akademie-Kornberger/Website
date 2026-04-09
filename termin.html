@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analyse | Akademie Kornberger</title>
+    <title>Analyse | Coach Tobi</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&family=Playfair+Display:italic,wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -22,6 +22,61 @@
             display: none;
             animation: fadeIn 0.4s ease;
         }
+        /* Dezenter Hinweis für den Favoriten */
+        .option.favorite::after {
+            content: "Kundenfavorit";
+            display: block;
+            font-size: 0.5rem;
+            letter-spacing: 1px;
+            color: var(--mokka-accent);
+            margin-top: 4px;
+            font-weight: 600;
+        }
+        /* Info-Icon Style */
+        .info-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            border: 1px solid var(--mokka-accent);
+            border-radius: 50%;
+            color: var(--mokka-accent);
+            text-decoration: none;
+            font-size: 0.7rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            margin-left: 8px;
+            vertical-align: middle;
+            transition: all 0.3s ease;
+        }
+        .info-icon:hover {
+            background: var(--mokka-accent);
+            color: white;
+        }
+        /* Style für die Checkbox-Sektion */
+        .checkbox-container {
+            margin-top: 15px; 
+            text-align: left; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            opacity: 0.7;
+            justify-content: center;
+        }
+        .checkbox-container input {
+            accent-color: var(--mokka-accent); 
+            width: 16px; 
+            height: 16px; 
+            cursor: pointer;
+        }
+        .checkbox-container label {
+            font-size: 0.75rem; 
+            letter-spacing: 1px; 
+            cursor: pointer; 
+            text-transform: uppercase;
+            font-family: 'Inter', sans-serif;
+        }
     </style>
 </head>
 <body class="form-page">
@@ -33,7 +88,7 @@
 
     <div class="main-wrapper">
         <nav class="navbar">
-            <div class="logo">AKADEMIE <span class="accent-gold">KORNBERGER</span></div>
+            <div class="logo">COACH <span class="accent-gold">TOBI</span></div>
             <a href="index.html" class="back-link">✕ ABBRECHEN</a>
         </nav>
 
@@ -73,8 +128,13 @@
                             <input type="number" id="input_gewicht_soll" name="gewicht_soll" placeholder="z.B. 75">
                         </div>
                     </div>
-                    <div class="error-msg" id="error2" style="margin-bottom: 20px;">Bitte fülle beide Gewichtsangaben aus</div>
                     
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="weight_unknown">
+                        <label for="weight_unknown">Ich kenne mein Gewicht aktuell nicht</label>
+                    </div>
+
+                    <div class="error-msg" id="error2" style="margin-bottom: 20px;">Bitte gib dein Gewicht an oder wähle die Option "unbekannt"</div>
                     <div class="btn-group">
                         <button type="button" class="back-btn" onclick="nextStep(1)">Zurück</button>
                         <button type="button" class="next-btn" onclick="validateAndNext(2, 3)">Weiter</button>
@@ -90,16 +150,13 @@
                         <div class="option" onclick="selectOption(this, 'fokus', 'Energie im Alltag')">Energie im Alltag</div>
                         <div class="option" onclick="selectOption(this, 'fokus', 'Sonstiges')">Etwas anderes...</div>
                     </div>
-                    
                     <div class="other-input-container" id="sonstiges_container">
                         <div class="input-box">
                             <input type="text" id="input_fokus_frei" name="fokus_sonstiges" placeholder="Beschreibe es kurz...">
                         </div>
                     </div>
-
                     <div class="error-msg" id="error3" style="margin-bottom: 20px;">Wähle eine Option aus</div>
                     <input type="hidden" id="selectedFokus" name="fokus">
-                    
                     <div class="btn-group">
                         <button type="button" class="back-btn" onclick="nextStep(2)">Zurück</button>
                         <button type="button" class="next-btn" onclick="validateAndNext(3, 4)">Weiter</button>
@@ -124,11 +181,14 @@
 
                 <div class="step" id="step5" style="display: none;">
                     <span class="step-number">05 / 06</span>
-                    <h2>Welches Paket interessiert dich?</h2>
+                    <h2 style="display: flex; align-items: center; justify-content: center;">
+                        Welches Paket? <a href="programme.html" target="_blank" class="info-icon" title="Pakete ansehen">i</a>
+                    </h2>
                     <div class="option-grid">
-                        <div class="option" onclick="selectOption(this, 'paket', 'Basis (12 Wochen)')">Basis Coaching (12 Wochen)</div>
-                        <div class="option" onclick="selectOption(this, 'paket', 'Premium (6 Monate)')">Premium Begleitung (6 Monate)</div>
-                        <div class="option" onclick="selectOption(this, 'paket', 'Elite (12 Monate)')">Elite Mentoring (12 Monate)</div>
+                        <div class="option" onclick="selectOption(this, 'paket', 'Basic')">Basic</div>
+                        <div class="option favorite" onclick="selectOption(this, 'paket', 'Standard')">Standard</div>
+                        <div class="option" onclick="selectOption(this, 'paket', 'Premium')">Premium</div>
+                        <div class="option" onclick="selectOption(this, 'paket', 'Elite')">Elite</div>
                     </div>
                     <div class="error-msg" id="error5" style="margin-bottom: 20px;">Wähle ein Paket aus</div>
                     <input type="hidden" id="selectedPaket" name="interessiertes_paket">
@@ -177,29 +237,20 @@
                 if (document.getElementById('input_name').value.trim().length > 1) isValid = true;
             } 
             else if (current === 2) {
-                const ist = parseFloat(document.getElementById('input_gewicht_ist').value);
-                const soll = parseFloat(document.getElementById('input_gewicht_soll').value);
+                const ist = document.getElementById('input_gewicht_ist').value;
+                const soll = document.getElementById('input_gewicht_soll').value;
+                const unknown = document.getElementById('weight_unknown').checked;
 
-                if (isNaN(ist) || isNaN(soll)) {
-                    error.innerText = "Bitte fülle beide Felder aus.";
-                } else if (soll < 45 || soll > 200) {
-                    error.innerText = "Das ist ein ungesundes Zielgewicht.";
-                } else if (ist < 40) {
-                    error.innerText = "Bitte gib ein realistisches Ist-Gewicht an.";
-                } else {
+                if (unknown) {
+                    if (document.getElementById('input_gewicht_ist').value === "") document.getElementById('input_gewicht_ist').value = "0";
+                    if (document.getElementById('input_gewicht_soll').value === "") document.getElementById('input_gewicht_soll').value = "0";
+                    isValid = true;
+                } else if (ist !== "" && soll !== "") {
                     isValid = true;
                 }
             } 
             else if (current === 3) {
-                const fok = document.getElementById('selectedFokus').value;
-                if (fok !== "") {
-                    if (fok === "Sonstiges") {
-                        if (document.getElementById('input_fokus_frei').value.trim().length > 2) isValid = true;
-                        else { error.innerText = "Beschreibe dein Anliegen bitte kurz."; }
-                    } else {
-                        isValid = true;
-                    }
-                }
+                if (document.getElementById('selectedFokus').value !== "") isValid = true;
             } 
             else if (current === 4) {
                 if (document.getElementById('selectedZeit').value !== "") isValid = true;
@@ -208,11 +259,8 @@
                 if (document.getElementById('selectedPaket').value !== "") isValid = true;
             }
 
-            if (isValid) {
-                nextStep(next);
-            } else {
-                error.style.display = "block";
-            }
+            if (isValid) nextStep(next);
+            else error.style.display = "block";
         }
 
         function selectOption(el, type, value) {
@@ -221,8 +269,7 @@
             
             if(type === 'fokus') {
                 document.getElementById('selectedFokus').value = value;
-                const container = document.getElementById('sonstiges_container');
-                container.style.display = (value === 'Sonstiges') ? "block" : "none";
+                document.getElementById('sonstiges_container').style.display = (value === 'Sonstiges') ? "block" : "none";
             }
             if(type === 'zeit') document.getElementById('selectedZeit').value = value;
             if(type === 'paket') document.getElementById('selectedPaket').value = value;
@@ -233,10 +280,8 @@
         document.getElementById("academyForm").addEventListener("submit", async function(e) {
             e.preventDefault();
             const tel = document.getElementById('input_tel').value.trim();
-            const error6 = document.getElementById('error6');
-
             if(tel.length < 7) {
-                error6.style.display = "block";
+                document.getElementById('error6').style.display = "block";
                 return;
             }
 
@@ -251,11 +296,10 @@
                     body: data,
                     headers: { 'Accept': 'application/json' }
                 });
-
                 if (response.ok) {
                     this.style.display = "none";
                     document.getElementById("successMessage").style.display = "block";
-                    setTimeout(() => { window.location.href = "index.html"; }, 5000);
+                    setTimeout(() => { window.location.href = "index.html"; }, 4000);
                 } else { throw new Error(); }
             } catch (error) {
                 alert("Fehler beim Senden.");
