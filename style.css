@@ -436,16 +436,38 @@ a { text-decoration: none !important; color: inherit !important; }
 
 /* 8. INSTA TAG & FOOTER */
 .insta-tag { 
-    position: fixed; 
-    bottom: 30px; 
-    right: 6%; 
-    font-size: 0.7rem; 
-    letter-spacing: 3px; 
-    text-transform: uppercase; 
+    display: inline-flex !important;
+    align-items: center;
+    gap: 8px;
     color: #9c846d !important; 
+    text-decoration: none !important;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    position: fixed; 
+    right: max(20px, env(safe-area-inset-right)); 
+    bottom: calc(20px + env(safe-area-inset-bottom)); 
     z-index: 9999 !important; 
-    pointer-events: auto; 
-    display: block !important;
+    opacity: 1; 
+    transition: opacity 0.3s, transform 0.3s; 
+    background: rgba(0, 0, 0, 0.45); 
+    padding: 10px 14px; 
+    border-radius: 999px; 
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25); 
+    backdrop-filter: blur(8px); 
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.insta-tag:hover {
+    color: #ffffff !important;
+}
+
+.insta-tag svg {
+    stroke: #9c846d;
+}
+
+.insta-tag:hover svg {
+    stroke: #ffffff;
 }
 
 .minimal-footer { 
@@ -496,11 +518,11 @@ a { text-decoration: none !important; color: inherit !important; }
     .hero h1 { font-size: 2.8rem; }
     
     .insta-tag { 
-        bottom: 25px; 
-        right: 10%; 
-        background: rgba(8, 8, 8, 0.7); 
-        padding: 6px 12px; 
-        border-radius: 4px;
+        bottom: calc(20px + env(safe-area-inset-bottom)); 
+        right: max(20px, env(safe-area-inset-right)); 
+        background: rgba(0, 0, 0, 0.6); 
+        padding: 10px 14px; 
+        border-radius: 999px;
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
     }
