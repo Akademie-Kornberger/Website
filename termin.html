@@ -100,9 +100,13 @@
                 </p>
             </div>
 
-            <form id="academyForm" action="https://formspree.io/f/mbdpbaok" method="POST" novalidate>
+            <form id="academyForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
                 
-                <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
+                <input type="hidden" name="access_key" value="9482e0fb-0e37-4f2f-a091-80359a879291">
+                <input type="hidden" name="subject" value="Neue Coaching-Analyse von Website">
+                <input type="hidden" name="from_name" value="Coach Tobi Website">
+                
+                <input type="checkbox" name="botcheck" class="hidden" style="display:none">
 
                 <div class="step active" id="step1">
                     <span class="step-number">01 / 06</span>
@@ -272,7 +276,6 @@
             e.preventDefault();
             const tel = document.getElementById('input_tel').value.trim();
             
-            // Logische Prüfung: Mindestens 8 Zeichen und muss mit + oder 0 beginnen
             const telPattern = /^[0\+]/;
             if(tel.length < 8 || !telPattern.test(tel)) {
                 document.getElementById('error6').style.display = "block";
@@ -284,12 +287,20 @@
             btn.disabled = true;
 
             const data = new FormData(this);
+            // In JSON umwandeln für Web3Forms
+            const object = Object.fromEntries(data);
+            const json = JSON.stringify(object);
+
             try {
                 const response = await fetch(this.action, {
                     method: 'POST',
-                    body: data,
-                    headers: { 'Accept': 'application/json' }
+                    body: json,
+                    headers: { 
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
                 });
+                const result = await response.json();
                 if (response.ok) {
                     this.style.display = "none";
                     document.getElementById("successMessage").style.display = "block";
