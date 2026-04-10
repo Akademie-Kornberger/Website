@@ -9,29 +9,47 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <style>
-        /* Direkt-Fix für den Insta-Tag, falls das CSS klemmt */
+        /* Optimierter Insta-Tag für iPhone Portrait & Landscape */
         .insta-tag {
             display: flex !important;
             align-items: center;
             gap: 8px;
             color: #9c846d !important; /* Mokka-Gold */
+            -webkit-text-fill-color: #9c846d !important; /* Fix für iOS Text-Rendering */
             text-decoration: none;
             font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.75rem; /* Etwas kleiner für Mobile */
             letter-spacing: 1px;
-            position: fixed; /* Fixiert ihn am Screen */
-            right: 20px;
-            bottom: 20px;
-            z-index: 9999;
-            opacity: 1;
-            transition: opacity 0.3s;
+            
+            /* Positionierung */
+            position: fixed;
+            right: 15px;
+            bottom: 30px; /* Höher gesetzt, damit es nicht mit der Home-Bar kollidiert */
+            z-index: 10000 !important;
+            
+            /* Sichtbarkeit-Boost: Die "Pille" */
+            background: rgba(10, 10, 10, 0.65); 
+            padding: 8px 15px;
+            border-radius: 30px;
+            backdrop-filter: blur(8px); /* Blur-Effekt für den Hintergrund */
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(156, 132, 109, 0.2);
+            transition: all 0.3s ease;
         }
+
         .insta-tag:hover {
             color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+            background: rgba(156, 132, 109, 0.8);
         }
+
         .insta-tag svg {
             stroke: #9c846d;
+            width: 16px;
+            height: 16px;
+            transition: stroke 0.3s ease;
         }
+
         .insta-tag:hover svg {
             stroke: #ffffff;
         }
@@ -62,16 +80,16 @@
                 </div>
             </div>
         </main>
-
-        <a href="https://instagram.com/kornberger.tobias" target="_blank" class="insta-tag">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-            </svg>
-            @kornberger.tobias
-        </a>
     </div>
+
+    <a href="https://instagram.com/kornberger.tobias" target="_blank" class="insta-tag">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+        @kornberger.tobias
+    </a>
 
     <div class="menu-overlay" id="menuOverlay">
         <div class="menu-nav-links">
@@ -85,7 +103,6 @@
     <script>
         function toggleMenu() {
             document.getElementById('menuOverlay').classList.toggle('open');
-            // Verhindert das Scrollen im Hintergrund, wenn Menü offen ist
             if (document.getElementById('menuOverlay').classList.contains('open')) {
                 document.body.style.overflow = 'hidden';
             } else {
